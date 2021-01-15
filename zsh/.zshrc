@@ -60,9 +60,3 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-
-# zsh-completions
-# https://github.com/zsh-users/zsh-completions
-fpath=( ~/.zshplugins/zsh-completions/src $fpath )
-rm -f ~/.zcompdump; compinit
-
