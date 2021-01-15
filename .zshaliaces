@@ -1,0 +1,12 @@
+# https://github.com/Phantas0s/.dotfiles/blob/master/aliases/aliases
+alias ls='ls --color=auto'
+alias lsl='ls -l'
+alias ll='ls -lahF'
+alias lls='ls -lahFtr'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias pg='ping 8.8.8.8'
+
+alias port="netstat -tulpn | grep"
+
