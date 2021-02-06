@@ -62,3 +62,26 @@ bindkey -M vicmd v edit-command-line
 
 # bd https://github.com/Tarrasch/zsh-bd
 bd.zsh
+
+
+# GCLOUD
+## The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/juri/google-cloud-sdk/path.zsh.inc' ]; then . '/home/juri/google-cloud-sdk/path.zsh.inc'; fi
+
+## The next line enables shell command completion for gcloud.
+if [ -f '/home/juri/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/juri/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# OnDir
+if [ $commands[ondir] ]; then
+  eval_ondir() {
+    eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+  }
+  chpwd_functions=( eval_ondir $chpwd_functions )
+fi
+
+if [ $commands[ondir] ]; then
+  eval "$(direnv hook zsh)"
+fi
+
+

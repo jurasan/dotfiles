@@ -10,3 +10,9 @@ alias pg='ping 8.8.8.8'
 
 alias port="netstat -tulpn | grep"
 
+
+# KubeCtl
+alias k=kubectl
+alias g=gcloud
+alias kcd='kubectl config set-context $(kubectl config current-context) --namespace'
+
