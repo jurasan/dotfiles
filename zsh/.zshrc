@@ -23,10 +23,6 @@ source "$ZDOTDIR/.zshaliaces"
 fpath=( "$ZDOTDIR/.zshfn" "${fpath[@]}" )
 autoload -Uz $fpath[1]/*(.:t)
 
-# prompt - https://github.com/Phantas0s/purification/blob/master/prompt_purification_setup
-# requires Font Awesome - sudo apt-get install -y fonts-font-awesome
-prompt.zsh
-
 # https://github.com/Phantas0s/.dotfiles/blob/master/zsh/plugins/completion.zsh
 _comp_options+=(globdots) # With hidden files
 completion.zsh
@@ -83,5 +79,9 @@ fi
 if [ $commands[ondir] ]; then
   eval "$(direnv hook zsh)"
 fi
+
+# prompt - https://github.com/Phantas0s/purification/blob/master/prompt_purification_setup
+# requires Font Awesome - sudo apt-get install -y fonts-font-awesome
+prompt.zsh
 
 

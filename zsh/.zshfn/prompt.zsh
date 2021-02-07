@@ -131,6 +131,36 @@ prompt_purification_setup() {
     prompt_git_branch
     RPROMPT='$(prompt_git_info) $(git_prompt_status)'
     PROMPT=$'%F{white}%~ %B%F{blue}>%f%b '
+
+    # My Config
+
+    PROMPT=$'%F{white}%~ %B%F{117}$(gcloud_project) %b%F{069}$(kubernetes_cluster)%F{blue} %f>%b'
 }
 
 prompt_purification_setup
+
+
+# MY CONFIG
+## gcloud project
+gcloud_project(){
+    project=$(command gcloud config get-value core/project)
+    if [[ ! -z "$project" ]]; then
+      echo "< $project"
+    fi
+
+}
+
+kubernetes_cluster(){
+    # cluster=$(gcloud config get-value container/cluster)
+    # if [[ ! -z "$cluster" ]]; then
+    #  echo "<< $cluster"
+    #fi
+
+    context=$(kubectl config current-context)
+    if [[ $context =~ ^gke_sixfold[^_]*_[^_]*_(.*)$ ]]; then
+       echo "<< $match[1]"
+    else
+    	echo "<< $context"
+    fi
+}
+
