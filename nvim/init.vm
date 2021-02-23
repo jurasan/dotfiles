@@ -1,0 +1,10 @@
+# Create link in $XDG_CONFIG_HOME dir
+# ln -s ~/.config/dotfiles/nvim $XDG_CONFIG_HOME/nvim
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+set clipboard+=unnamedplus
+
