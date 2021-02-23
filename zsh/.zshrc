@@ -88,4 +88,8 @@ prompt.zsh
 export DIRENV_LOG_FORMAT=
 eval "$(direnv hook zsh)"
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
