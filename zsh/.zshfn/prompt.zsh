@@ -134,7 +134,7 @@ prompt_purification_setup() {
 
     # My Config
 
-    PROMPT=$'%F{white}%~ %B%F{117}$(gcloud_project) %b%F{069}$(kubernetes_cluster)%F{blue} %f>%b '
+    PROMPT=$'%F{white}%~%B%F{117}$(gcloud_project)%b%F{069}$(kubernetes_cluster)%F{blue} %f>%b '
 }
 
 prompt_purification_setup
@@ -145,17 +145,19 @@ prompt_purification_setup
 gcloud_project(){
     project=$(gcloud config get-value core/project 2> /dev/null)
     if [[ ! -z "$project" ]]; then
-      echo "< $project"
+      echo " < $project"
     fi
 
 }
 
 kubernetes_cluster(){
-    context=$(kubectl config current-context)
-    if [[ $context =~ ^gke_sixfold[^_]*_[^_]*_(.*)$ ]]; then
-       echo "<< $match[1]"
-    else
-    	echo "<< $context"
+    context=$(kubectl config current-context 2> /dev/null)
+    if [[ ! -z "$context" ]]; then
+      if [[ $context =~ ^gke_sixfold[^_]*_[^_]*_(.*)$ ]]; then
+        echo " << $match[1]"
+      else
+    	echo " << $context"
+      fi
     fi
 }
 
