@@ -84,4 +84,8 @@ fi
 # requires Font Awesome - sudo apt-get install -y fonts-font-awesome
 prompt.zsh
 
+# DirEnv
+export DIRENV_LOG_FORMAT=
+eval "$(direnv hook zsh)"
+
 
