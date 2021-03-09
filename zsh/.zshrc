@@ -100,4 +100,6 @@ source <(kubectl completion zsh | sed s/kubectl/k/g)
 
 
 
+# TERRAFORM
+complete -o nospace -C /usr/local/bin/terraform terraform
 
