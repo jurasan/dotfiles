@@ -157,3 +157,14 @@ prompt_kubernetes_cluster(){
       p10k segment -t ""
     fi
 }
+
+# yarn
+export PATH="$(yarn global bin):~/.config/yarn/global/node_modules:$PATH"
+
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+source $XDG_CONFIG_HOME/zshplugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# https://github.com/zsh-users/zsh-syntax-highlighting
+source $XDG_CONFIG_HOME/zshplugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
