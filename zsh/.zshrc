@@ -10,8 +10,13 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 # setopt appendhistory autocd beep extendedglob nomatch notify
-# bindkey -v
+
 # # End of lines configured by zsh-newuser-install
+
+
+# # VI mode
+# bindkey -v
+# export KEYTIMEOUT=1
 # # The following lines were added by compinstall
 # zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 
@@ -48,13 +53,41 @@ source "$ZDOTDIR/.zshaliaces"
 # https://github.com/wting/autojump#automatic
 . /usr/share/autojump/autojump.sh
 
+# Vi Mode
+# https://thevaluable.dev/zsh-install-configure/
+bindkey -v
+export KEYTIMEOUT=1
 # cursor_mode.zsh
-# # vim mapping
+# vim mapping
 # zmodload zsh/complist
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
 
 # # edit command lines in vim
 # export VISUAL=vim
