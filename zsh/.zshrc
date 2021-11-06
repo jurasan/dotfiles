@@ -45,11 +45,9 @@ source "$ZDOTDIR/.zshaliaces"
 # for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 
-# # Vi Mode
-# # https://thevaluable.dev/zsh-install-configure/
-# bindkey -v
-# export KEYTIMEOUT=1
-# # https://thevaluable.dev/zsh-install-configure/
+# https://github.com/wting/autojump#automatic
+. /usr/share/autojump/autojump.sh
+
 # cursor_mode.zsh
 # # vim mapping
 # zmodload zsh/complist
